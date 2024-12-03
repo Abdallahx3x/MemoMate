@@ -7,14 +7,15 @@ import androidx.room.Room;
 import java.util.List;
 
 public class NoteLocalDataSourceImpl implements NoteLocalDataSource {
-    private Context context;
+    private final AppDatabase db;
+    private final NoteDao noteDao;
 
     public NoteLocalDataSourceImpl(Context context) {
-        this.context = context;
+        // Initialize db here, ensuring context is not null
+        this.db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-name").build();
+        this.noteDao = db.noteDao();
     }
 
-    public final AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, "database-name").build();
-    private final NoteDao noteDao = db.noteDao();
 
     @Override
     public List<NoteDto> getAllNotes() {
@@ -27,12 +28,12 @@ public class NoteLocalDataSourceImpl implements NoteLocalDataSource {
     }
 
     @Override
-    public void deleteNote(NoteDto note) {
-        noteDao.deleteNoteById(note.id);
+    public void deleteNote(int id) {
+        noteDao.deleteNoteById(id);
     }
 
     @Override
-    public void getNoteById(NoteDto note) {
-        noteDao.getNoteById(note.id);
+    public NoteDto getNoteById(int id) {
+      return noteDao.getNoteById(id);
     }
 }
