@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -50,6 +51,9 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     annotationProcessor(libs.room.compiler)
+//hilt di
+    implementation (libs.hilt.android)
+    annotationProcessor (libs.hilt.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

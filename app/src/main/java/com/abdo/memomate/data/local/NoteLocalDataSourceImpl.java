@@ -1,19 +1,15 @@
 package com.abdo.memomate.data.local;
 
-import android.content.Context;
-
-import androidx.room.Room;
-
 import com.abdo.memomate.data.repository.NoteLocalDataSource;
-
 import java.util.List;
+import javax.inject.Inject;
 
 public class NoteLocalDataSourceImpl implements NoteLocalDataSource {
     private final NoteDao noteDao;
 
-    public NoteLocalDataSourceImpl(Context context) {
-        AppDatabase db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-name").build();
-        this.noteDao = db.noteDao();
+    @Inject
+    public NoteLocalDataSourceImpl(NoteDao noteDao) {
+        this.noteDao = noteDao;
     }
 
     @Override
