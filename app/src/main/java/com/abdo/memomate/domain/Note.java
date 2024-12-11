@@ -1,4 +1,4 @@
-package com.abdo.memomate.repository;
+package com.abdo.memomate.domain;
 
 public class Note {
     public int id;

@@ -1,21 +1,20 @@
-package com.abdo.memomate.data;
+package com.abdo.memomate.data.local;
 
 import android.content.Context;
 
 import androidx.room.Room;
 
+import com.abdo.memomate.data.repository.NoteLocalDataSource;
+
 import java.util.List;
 
 public class NoteLocalDataSourceImpl implements NoteLocalDataSource {
-    private final AppDatabase db;
     private final NoteDao noteDao;
 
     public NoteLocalDataSourceImpl(Context context) {
-        // Initialize db here, ensuring context is not null
-        this.db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-name").build();
+        AppDatabase db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-name").build();
         this.noteDao = db.noteDao();
     }
-
 
     @Override
     public List<NoteDto> getAllNotes() {
@@ -34,6 +33,6 @@ public class NoteLocalDataSourceImpl implements NoteLocalDataSource {
 
     @Override
     public NoteDto getNoteById(int id) {
-      return noteDao.getNoteById(id);
+        return noteDao.getNoteById(id);
     }
 }

@@ -1,12 +1,12 @@
-package com.abdo.memomate.repository;
+package com.abdo.memomate.data.repository;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import com.abdo.memomate.data.NoteDto;
-import com.abdo.memomate.data.NoteLocalDataSource;
-import com.abdo.memomate.data.NoteLocalDataSourceImpl;
-import com.abdo.memomate.data.NoteRepository;
+import com.abdo.memomate.data.local.NoteDto;
+import com.abdo.memomate.data.local.NoteLocalDataSourceImpl;
+import com.abdo.memomate.domain.Note;
+import com.abdo.memomate.domain.NoteRepository;
 
 import java.util.List;
 

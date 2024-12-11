@@ -1,6 +1,4 @@
-package com.abdo.memomate.data;
-
-import com.abdo.memomate.repository.Note;
+package com.abdo.memomate.domain;
 
 import java.util.List;
 
