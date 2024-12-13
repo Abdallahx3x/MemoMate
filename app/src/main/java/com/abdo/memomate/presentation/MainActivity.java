@@ -1,9 +1,11 @@
-package com.abdo.memomate;
+package com.abdo.memomate.presentation;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+
+import com.abdo.memomate.R;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

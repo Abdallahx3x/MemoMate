@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.abdo.memomate.domain.NoteRepository;
-import com.abdo.memomate.presentation.NoteMapper;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -15,10 +14,13 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
-public class NoteViewModel extends ViewModel {
+public class NoteViewModel extends ViewModel implements NoteInteractionListener {
 
     private final MutableLiveData<NoteUiState> _state = new MutableLiveData<>();
     public final LiveData<NoteUiState> state = _state;
+
+    private final MutableLiveData<NoteUiEffect> _effect = new MutableLiveData<>();
+    public final LiveData<NoteUiEffect> effect = _effect;
     private final Executor executor;
     private final NoteRepository noteRepository;
 
@@ -37,7 +39,42 @@ public class NoteViewModel extends ViewModel {
         _state.postValue(noteUiState);
     }
 
-    public void addNote() {
+    @Override
+    public void onClickNoteItem(NoteItemUiState item) {
+        _effect.setValue(new NoteUiEffect.NavigateToDetails());
+        setDetails(item);
+    }
+
+    @Override
+    public void onClickAddNote() {
+        _effect.setValue(new NoteUiEffect.NavigateToDetails());
+        initDetails();
+    }
+
+    @Override
+    public void onClickDeleteButton() {
+        deleteNote();
+        _effect.setValue(new NoteUiEffect.NavigateBack());
+    }
+
+    @Override
+    public void onClickBackButton() {
+        _effect.setValue(new NoteUiEffect.NavigateBack());
+    }
+
+    @Override
+    public void onClickSaveButton() {
+        NoteUiState noteUiState = _state.getValue() != null ? _state.getValue() : null;
+        if (noteUiState == null) return;
+        if (noteUiState.getNoteDetails().id == -1) {
+            addNote();
+        } else {
+            updateNote();
+        }
+        _effect.setValue(new NoteUiEffect.NavigateBack());
+    }
+
+    private void addNote() {
         executor.execute(() -> {
             NoteItemUiState noteItemUiState = _state.getValue() != null ? _state.getValue().getNoteDetails() : null;
             if (noteItemUiState != null) {
@@ -47,7 +84,7 @@ public class NoteViewModel extends ViewModel {
         });
     }
 
-    public void updateNote() {
+    private void updateNote() {
         executor.execute(() -> {
             NoteItemUiState noteItemUiState = _state.getValue() != null ? _state.getValue().getNoteDetails() : null;
             if (noteItemUiState == null) return;
@@ -57,13 +94,13 @@ public class NoteViewModel extends ViewModel {
         });
     }
 
-    public void setDetails(NoteItemUiState item) {
+    private void setDetails(NoteItemUiState item) {
         NoteUiState currentState = _state.getValue() != null ? _state.getValue() : new NoteUiState();
         currentState.setNoteDetails(item);
-        _state.setValue(state.getValue());
+        _state.setValue(currentState);
     }
 
-    public void deleteNote() {
+    private void deleteNote() {
         executor.execute(() -> {
             NoteItemUiState noteItemUiState = _state.getValue() != null ? _state.getValue().getNoteDetails() : null;
             if (noteItemUiState == null) return;
@@ -72,7 +109,7 @@ public class NoteViewModel extends ViewModel {
         });
     }
 
-    public void initDetails() {
+    private void initDetails() {
         NoteUiState noteUiState = _state.getValue() != null ? _state.getValue() : null;
         if (noteUiState == null) return;
         noteUiState.setNoteDetails(new NoteItemUiState(0, "", ""));

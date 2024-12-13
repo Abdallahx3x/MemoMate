@@ -1,10 +1,8 @@
-package com.abdo.memomate.presentation;
+package com.abdo.memomate.presentation.shared;
 
 import android.annotation.SuppressLint;
 
 import com.abdo.memomate.domain.Note;
-import com.abdo.memomate.presentation.shared.NoteItemUiState;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
