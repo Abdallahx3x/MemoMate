@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -8,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.abdo.memomate"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -50,6 +51,9 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     annotationProcessor(libs.room.compiler)
+//hilt di
+    implementation (libs.hilt.android)
+    annotationProcessor (libs.hilt.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

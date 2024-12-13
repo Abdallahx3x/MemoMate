@@ -2,42 +2,57 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.NoteFragment">
+    tools:context=".presentation.home.HomeFragment">
+
     <data>
+
         <variable
             name="note"
-            type="com.abdo.memomate.presentation.NoteUiState" />
+            type="com.abdo.memomate.presentation.shared.NoteUiState" />
     </data>
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:layoutManager="LinearLayoutManager"
-        tools:listitem="@layout/fragment_note_item" />
-      <!--  <TextView
+        android:background="@color/background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/header_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/my_notes"
+                android:textSize="24sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingVertical="8dp"
+                app:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/fragment_note_item" />
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:textSize="44.sp"
-            android:text="@{note.title}"
-            />-->
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
-        android:contentDescription="add_note"
-        android:src="@drawable/add_icon" />
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/secondary"
+            android:contentDescription="@string/add_note"
+            android:src="@drawable/add_icon"
+            app:fabCustomSize="56dp"
+            app:tint="@color/white" />
     </FrameLayout>
-
 </layout>

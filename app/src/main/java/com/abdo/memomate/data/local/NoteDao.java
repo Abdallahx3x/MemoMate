@@ -1,4 +1,4 @@
-package com.abdo.memomate.data;
+package com.abdo.memomate.data.local;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
