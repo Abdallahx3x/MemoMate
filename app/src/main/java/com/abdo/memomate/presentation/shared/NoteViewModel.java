@@ -97,7 +97,7 @@ public class NoteViewModel extends ViewModel implements NoteInteractionListener 
     private void setDetails(NoteItemUiState item) {
         NoteUiState currentState = _state.getValue() != null ? _state.getValue() : new NoteUiState();
         currentState.setNoteDetails(item);
-        _state.setValue(currentState);
+        _state.postValue(currentState);
     }
 
     private void deleteNote() {
@@ -113,6 +113,6 @@ public class NoteViewModel extends ViewModel implements NoteInteractionListener 
         NoteUiState noteUiState = _state.getValue() != null ? _state.getValue() : null;
         if (noteUiState == null) return;
         noteUiState.setNoteDetails(new NoteItemUiState(0, "", ""));
-        _state.setValue(noteUiState);
+        _state.postValue(noteUiState);
     }
 }
