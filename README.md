@@ -24,7 +24,7 @@ MemoMate is a simple and efficient note-taking and memo app built using Java and
 
 ## Screenshots
 
-<div style="display: flex; gap: 10px;">
+<div style="display: flex; gap: 12px;">
 
 <img src="https://github.com/user-attachments/assets/675b2c04-d07f-4930-ac0f-7498ab2badbd" alt="Home Screen" width="45%">
 <img src="https://github.com/user-attachments/assets/a1ce404d-9392-4dd6-8052-45af01fa3657" alt="Add/Edit Note" width="45%">
@@ -38,7 +38,7 @@ MemoMate is a simple and efficient note-taking and memo app built using Java and
 
 1. Clone this repository:
    ```bash
-      [git clone https://github.com/Abdallahx3x/MemoMate.git](https://github.com/Abdallahx3x/MemoMate.git)
+    https://github.com/Abdallahx3x/MemoMate.git
    ```
 2. Open the project in Android Studio.
 3. Sync Gradle to download dependencies.
