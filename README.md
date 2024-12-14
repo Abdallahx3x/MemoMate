@@ -24,12 +24,12 @@ MemoMate is a simple and efficient note-taking and memo app built using Java and
 
 ## Screenshots
 
-### Home Screen
-![Home Screen]![memoMate-homeScreen](https://github.com/user-attachments/assets/675b2c04-d07f-4930-ac0f-7498ab2badbd)
+<div style="display: flex; gap: 10px;">
 
+<img src="https://github.com/user-attachments/assets/675b2c04-d07f-4930-ac0f-7498ab2badbd" alt="Home Screen" width="45%">
+<img src="https://github.com/user-attachments/assets/a1ce404d-9392-4dd6-8052-45af01fa3657" alt="Add/Edit Note" width="45%">
 
-### Add/Edit Note
-![Add/Edit Note]![memoMate-detailsScreen](https://github.com/user-attachments/assets/a1ce404d-9392-4dd6-8052-45af01fa3657)
+</div>
 
 
 ---
@@ -38,7 +38,7 @@ MemoMate is a simple and efficient note-taking and memo app built using Java and
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/Abdallahx3x/MemoMate.git
+      [git clone https://github.com/Abdallahx3x/MemoMate.git](https://github.com/Abdallahx3x/MemoMate.git)
    ```
 2. Open the project in Android Studio.
 3. Sync Gradle to download dependencies.
@@ -52,17 +52,3 @@ MemoMate is a simple and efficient note-taking and memo app built using Java and
 2. Add a new note by tapping the **+** button.
 3. Enter the title and details, then save.
 4. Edit or delete notes by selecting them from the list.
-
-
----
-
-## Contributing
-
-Contributions are welcome! Feel free to fork this repository and submit a pull request with your improvements.
-
----
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
